@@ -9,12 +9,14 @@
 #import <MessageUI/MessageUI.h>
 
 #import "SVModalWebViewController.h"
+#import "CustomViewController.h"
 
-@interface SVWebViewController : UIViewController
+@interface SVWebViewController : CustomViewController
 
 - (id)initWithAddress:(NSString*)urlString;
 - (id)initWithURL:(NSURL*)URL;
 
 @property (nonatomic, readwrite) SVWebViewControllerAvailableActions availableActions;
+@property (nonatomic, strong) NSURL *URL;
 
 @end

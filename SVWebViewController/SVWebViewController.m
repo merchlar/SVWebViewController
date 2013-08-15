@@ -18,7 +18,7 @@
 @property (nonatomic, strong, readonly) UIActionSheet *pageActionSheet;
 
 @property (nonatomic, strong) UIWebView *mainWebView;
-@property (nonatomic, strong) NSURL *URL;
+//@property (nonatomic, strong) NSURL *URL;
 
 - (id)initWithAddress:(NSString*)urlString;
 - (id)initWithURL:(NSURL*)URL;
@@ -247,7 +247,8 @@
         UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, toolbarWidth, 44.0f)];
         toolbar.items = items;
 				toolbar.barStyle = self.navigationController.navigationBar.barStyle;
-        toolbar.tintColor = self.navigationController.navigationBar.tintColor;
+        toolbar.tintColor = [UIColor colorWithRed:0.000000F green:0.435294F blue:0.717647F alpha:1.0F];
+
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:toolbar];
     } 
     
@@ -279,7 +280,7 @@
         }
         
 				self.navigationController.toolbar.barStyle = self.navigationController.navigationBar.barStyle;
-				self.navigationController.toolbar.tintColor = self.navigationController.navigationBar.tintColor;
+				self.navigationController.toolbar.tintColor = [UIColor colorWithRed:0.000000F green:0.435294F blue:0.717647F alpha:1.0F];
         self.toolbarItems = items;
     }
 }
