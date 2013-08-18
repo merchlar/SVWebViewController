@@ -7,6 +7,7 @@
 //  https://github.com/samvermette/SVWebViewController
 
 #import "SVWebViewController.h"
+#import "MBProgressHUD.h"
 
 @interface SVWebViewController () <UIWebViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 
@@ -146,6 +147,8 @@
     mainWebView.scalesPageToFit = YES;
     [self loadURL:self.URL];
     self.view = mainWebView;
+
+
 }
 
 - (void)viewDidLoad {
@@ -172,6 +175,7 @@
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         [self.navigationController setToolbarHidden:NO animated:animated];
     }
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -185,6 +189,7 @@
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
@@ -199,6 +204,7 @@
 {
     [mainWebView stopLoading];
  	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+
     mainWebView.delegate = nil;
 }
 
@@ -289,12 +295,20 @@
 #pragma mark UIWebViewDelegate
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
+    
+    NSLog(@"webViewDidStartLoad");
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+
     [self updateToolbarItems];
 }
 
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
+    
+    NSLog(@"webViewDidFinishLoad");
+
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     
     self.navigationItem.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
@@ -302,7 +316,12 @@
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    
+    NSLog(@"didFailLoadWithError");
+
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+
     [self updateToolbarItems];
 }
 
