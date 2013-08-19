@@ -18,5 +18,6 @@
 
 @property (nonatomic, readwrite) SVWebViewControllerAvailableActions availableActions;
 @property (nonatomic, strong) NSURL *URL;
+@property (weak, nonatomic) IBOutlet UIImageView *noReachabilityImageView;
 
 @end

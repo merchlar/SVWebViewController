@@ -8,6 +8,7 @@
 
 #import "SVWebViewController.h"
 #import "MBProgressHUD.h"
+#import "Reachability.h"
 
 @interface SVWebViewController () <UIWebViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 
@@ -136,12 +137,15 @@
 }
 
 - (void)loadURL:(NSURL *)pageURL {
+    NSLog(@"loadURL");
     [mainWebView loadRequest:[NSURLRequest requestWithURL:pageURL]];
 }
 
 #pragma mark - View lifecycle
 
 - (void)loadView {
+    NSLog(@"loadView");
+
     mainWebView = [[UIWebView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     mainWebView.delegate = self;
     mainWebView.scalesPageToFit = YES;
@@ -154,6 +158,41 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     [self updateToolbarItems];
+        
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(reachabilityChanged:)
+                                                 name:kReachabilityChangedNotification
+                                               object:nil];
+    
+    Reachability * reach = [Reachability reachabilityWithHostname:@"www.google.com"];
+    
+    reach.reachableBlock = ^(Reachability * reachability)
+    {
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"viewDidLoad reachableBlock");
+
+//            blockLabel.text = @"Block Says Reachable";
+//            self.view = mainWebView;
+            [self.noReachabilityImageView removeFromSuperview];
+            [self loadView];
+
+        });
+    };
+    
+    reach.unreachableBlock = ^(Reachability * reachability)
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+//            blockLabel.text = @"Block Says Unreachable";
+//            self.view = self.noReachabilityImageView;
+            NSLog(@"viewDidLoad unreachableBlock");
+//            [self.view addSubview:self.noReachabilityImageView];
+            [[[mainWebView subviews] objectAtIndex:0] addSubview:self.noReachabilityImageView];
+
+        });
+    };
+    
+    [reach startNotifier];
 }
 
 - (void)viewDidUnload {
@@ -362,6 +401,33 @@
 #else
     [self dismissViewControllerAnimated:YES completion:NULL];
 #endif
+}
+
+#pragma mark -
+#pragma mark Reachability methods
+
+-(void)reachabilityChanged:(NSNotification*)note
+{
+    Reachability * reach = [note object];
+    
+    if([reach isReachable])
+    {
+        NSLog(@"reachabilityChanged reachableBlock");
+        [self.noReachabilityImageView removeFromSuperview];
+//        notificationLabel.text = @"Notification Says Reachable";
+//        self.view = mainWebView;
+
+    }
+    else
+    {
+        NSLog(@"reachabilityChanged unreachableBlock");
+//        [self.view addSubview:self.noReachabilityImageView];
+//        notificationLabel.text = @"Notification Says Unreachable";
+//        self.view = self.noReachabilityImageView;
+        
+        [[[mainWebView subviews] objectAtIndex:0] addSubview:self.noReachabilityImageView];
+
+    }
 }
 
 #pragma mark -
