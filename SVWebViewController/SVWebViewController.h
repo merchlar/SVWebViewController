@@ -9,9 +9,9 @@
 #import <MessageUI/MessageUI.h>
 
 #import "SVModalWebViewController.h"
-#import "CustomViewController.h"
+//#import "CustomViewController.h"
 
-@interface SVWebViewController : CustomViewController
+@interface SVWebViewController : UIViewController
 
 - (id)initWithAddress:(NSString*)urlString;
 - (id)initWithURL:(NSURL*)URL;
