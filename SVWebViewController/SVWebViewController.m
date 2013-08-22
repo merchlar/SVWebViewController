@@ -210,11 +210,35 @@
     NSAssert(self.navigationController, @"SVWebViewController needs to be contained in a UINavigationController. If you are presenting SVWebViewController modally, use SVModalWebViewController instead.");
     
 	[super viewWillAppear:animated];
+    
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    
 	
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         [self.navigationController setToolbarHidden:NO animated:animated];
     }
     
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];/* initialize your button */
+    UIImage *image = [UIImage imageNamed:@"back-btn~ipad.png"];
+    [button setImage:image forState:UIControlStateNormal];
+    button.frame = CGRectMake(0, 0, (image.size.width *2), (image.size.height *2));
+    [button addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.leftBarButtonItem = barButtonItem;
+    self.navigationItem.hidesBackButton = YES;
+    
+    UILabel* lbNavTitle = [[UILabel alloc] initWithFrame:CGRectMake(10,0,200,40)];
+    lbNavTitle.textAlignment = NSTextAlignmentLeft;
+    lbNavTitle.textColor = [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0];
+    lbNavTitle.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8];
+    lbNavTitle.shadowOffset = CGSizeMake(0,1);
+    lbNavTitle.backgroundColor = [UIColor clearColor];
+    [lbNavTitle setFont:[UIFont fontWithName:@"YWFTUltramagnetic-Bold" size:20.0f]];
+    lbNavTitle.text = self.navigationItem.title;
+    lbNavTitle.adjustsFontSizeToFitWidth = YES;
+    lbNavTitle.minimumScaleFactor = 0;
+    self.navigationItem.titleView = lbNavTitle;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -292,7 +316,7 @@
         UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, toolbarWidth, 44.0f)];
         toolbar.items = items;
 				toolbar.barStyle = self.navigationController.navigationBar.barStyle;
-        toolbar.tintColor = [UIColor colorWithRed:0.000000F green:0.435294F blue:0.717647F alpha:1.0F];
+//        toolbar.tintColor = [UIColor colorWithRed:0.000000F green:0.435294F blue:0.717647F alpha:1.0F];
 
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:toolbar];
     } 
@@ -325,7 +349,7 @@
         }
         
 				self.navigationController.toolbar.barStyle = self.navigationController.navigationBar.barStyle;
-				self.navigationController.toolbar.tintColor = [UIColor colorWithRed:0.000000F green:0.435294F blue:0.717647F alpha:1.0F];
+//				self.navigationController.toolbar.tintColor = [UIColor colorWithRed:0.000000F green:0.435294F blue:0.717647F alpha:1.0F];
         self.toolbarItems = items;
     }
 }
@@ -500,6 +524,10 @@
 #else
     [self dismissViewControllerAnimated:YES completion:NULL];
 #endif
+}
+
+- (void)backAction {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end
