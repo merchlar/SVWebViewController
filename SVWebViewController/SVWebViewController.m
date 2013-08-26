@@ -228,6 +228,7 @@
     self.navigationItem.leftBarButtonItem = barButtonItem;
     self.navigationItem.hidesBackButton = YES;
     
+    [self loadURL:[NSURL URLWithString:NSLocalizedString(@"Webview_URL", nil)]];
 
 }
 
