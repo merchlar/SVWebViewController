@@ -228,17 +228,7 @@
     self.navigationItem.leftBarButtonItem = barButtonItem;
     self.navigationItem.hidesBackButton = YES;
     
-    UILabel* lbNavTitle = [[UILabel alloc] initWithFrame:CGRectMake(10,0,200,40)];
-    lbNavTitle.textAlignment = NSTextAlignmentLeft;
-    lbNavTitle.textColor = [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0];
-    lbNavTitle.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8];
-    lbNavTitle.shadowOffset = CGSizeMake(0,1);
-    lbNavTitle.backgroundColor = [UIColor clearColor];
-    [lbNavTitle setFont:[UIFont fontWithName:@"YWFTUltramagnetic-Bold" size:20.0f]];
-    lbNavTitle.text = self.navigationItem.title;
-    lbNavTitle.adjustsFontSizeToFitWidth = YES;
-    lbNavTitle.minimumScaleFactor = 0;
-    self.navigationItem.titleView = lbNavTitle;
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
