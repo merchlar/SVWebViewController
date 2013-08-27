@@ -8,6 +8,7 @@
 
 #import "SVWebViewController.h"
 #import "Reachability.h"
+#import "Flurry.h"
 
 @interface SVWebViewController () <UIWebViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 
@@ -229,6 +230,9 @@
     
     [self loadURL:[NSURL URLWithString:NSLocalizedString(@"Webview_URL", nil)]];
     [self setURL:[NSURL URLWithString:NSLocalizedString(@"Webview_URL", nil)]];
+    
+    [Flurry logEvent:@"WEBVIEW"];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
