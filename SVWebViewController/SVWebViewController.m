@@ -222,6 +222,8 @@
         [self.navigationController setToolbarHidden:NO animated:animated];
     }
     
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
