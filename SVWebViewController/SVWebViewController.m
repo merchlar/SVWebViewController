@@ -7,7 +7,6 @@
 //  https://github.com/samvermette/SVWebViewController
 
 #import "SVWebViewController.h"
-#import "MBProgressHUD.h"
 #import "Reachability.h"
 
 @interface SVWebViewController () <UIWebViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
@@ -69,7 +68,7 @@
 - (UIBarButtonItem *)refreshBarButtonItem {
     
     if (!refreshBarButtonItem) {
-        refreshBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(reloadClicked:)];
+        refreshBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"SVWebViewController.bundle/iPhone/refresh"] style:UIBarButtonItemStylePlain target:self action:@selector(reloadClicked:)];
     }
     
     return refreshBarButtonItem;
@@ -78,7 +77,7 @@
 - (UIBarButtonItem *)stopBarButtonItem {
     
     if (!stopBarButtonItem) {
-        stopBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(stopClicked:)];
+        stopBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"SVWebViewController.bundle/iPhone/stop"] style:UIBarButtonItemStylePlain target:self action:@selector(stopClicked:)];
     }
     return stopBarButtonItem;
 }
@@ -86,7 +85,7 @@
 - (UIBarButtonItem *)actionBarButtonItem {
     
     if (!actionBarButtonItem) {
-        actionBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionButtonClicked:)];
+        actionBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"SVWebViewController.bundle/iPhone/action"] style:UIBarButtonItemStylePlain target:self action:@selector(actionButtonClicked:)];
     }
     return actionBarButtonItem;
 }
@@ -229,7 +228,7 @@
     self.navigationItem.hidesBackButton = YES;
     
     [self loadURL:[NSURL URLWithString:NSLocalizedString(@"Webview_URL", nil)]];
-
+    [self setURL:[NSURL URLWithString:NSLocalizedString(@"Webview_URL", nil)]];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -351,7 +350,11 @@
 - (void)webViewDidStartLoad:(UIWebView *)webView {
     
     NSLog(@"webViewDidStartLoad");
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
+    if (self.currentLoader == nil) {
+        self.currentLoader = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
+    }
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 
     [self updateToolbarItems];
@@ -363,6 +366,9 @@
     NSLog(@"webViewDidFinishLoad");
 
     [MBProgressHUD hideHUDForView:self.view animated:YES];
+//    if (result) {
+        self.currentLoader = nil;
+//    }
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     
     self.navigationItem.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
