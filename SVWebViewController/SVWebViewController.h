@@ -18,6 +18,7 @@
 
 @property (nonatomic, readwrite) SVWebViewControllerAvailableActions availableActions;
 @property (nonatomic, strong) NSURL *URL;
-@property (weak, nonatomic) IBOutlet UIImageView *noReachabilityImageView;
+//@property (weak, nonatomic) IBOutlet UIImageView *noReachabilityImageView;
 @property (nonatomic, strong) MBProgressHUD * currentLoader;
+@property (strong, nonatomic) IBOutlet UIView *noConnectionView;
 @end

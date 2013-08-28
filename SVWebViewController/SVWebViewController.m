@@ -174,7 +174,7 @@
 
 //            blockLabel.text = @"Block Says Reachable";
 //            self.view = mainWebView;
-            [self.noReachabilityImageView removeFromSuperview];
+            [self.noConnectionView removeFromSuperview];
             [self loadView];
 
         });
@@ -184,10 +184,10 @@
     {
         dispatch_async(dispatch_get_main_queue(), ^{
 //            blockLabel.text = @"Block Says Unreachable";
-//            self.view = self.noReachabilityImageView;
+//            self.view = self.noConnectionView;
             NSLog(@"viewDidLoad unreachableBlock");
-//            [self.view addSubview:self.noReachabilityImageView];
-            [[[mainWebView subviews] objectAtIndex:0] addSubview:self.noReachabilityImageView];
+//            [self.view addSubview:self.noConnectionView];
+            [[[mainWebView subviews] objectAtIndex:0] addSubview:self.noConnectionView];
 
         });
     };
@@ -438,7 +438,7 @@
     if([reach isReachable])
     {
         NSLog(@"reachabilityChanged reachableBlock");
-        [self.noReachabilityImageView removeFromSuperview];
+        [self.noConnectionView removeFromSuperview];
 //        notificationLabel.text = @"Notification Says Reachable";
 //        self.view = mainWebView;
 
@@ -446,11 +446,11 @@
     else
     {
         NSLog(@"reachabilityChanged unreachableBlock");
-//        [self.view addSubview:self.noReachabilityImageView];
+//        [self.view addSubview:self.noConnectionView];
 //        notificationLabel.text = @"Notification Says Unreachable";
-//        self.view = self.noReachabilityImageView;
+//        self.view = self.noConnectionView;
         
-        [[[mainWebView subviews] objectAtIndex:0] addSubview:self.noReachabilityImageView];
+        [[[mainWebView subviews] objectAtIndex:0] addSubview:self.noConnectionView];
 
     }
 }
