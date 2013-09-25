@@ -10,6 +10,7 @@
 #import "MBProgressHUD.h"
 #import "Reachability.h"
 #import "Flurry.h"
+#import "DisclaimerViewController.h"
 
 @interface SVWebViewController () <UIWebViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 
@@ -29,7 +30,7 @@
 
 - (void)updateToolbarItems;
 
-- (void)goBackClicked:(UIBarButtonItem *)sender;
+
 - (void)goForwardClicked:(UIBarButtonItem *)sender;
 - (void)reloadClicked:(UIBarButtonItem *)sender;
 - (void)stopClicked:(UIBarButtonItem *)sender;
@@ -145,7 +146,7 @@
 #pragma mark - View lifecycle
 
 - (void)loadView {
-    NSLog(@"loadView");
+    NSLog(@"--loadView--");
 
     mainWebView = [[UIWebView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     mainWebView.delegate = self;
@@ -154,6 +155,19 @@
     self.view = mainWebView;
 
 
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self performSegueWithIdentifier:@"openDisclaimer" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"openDisclaimer" ]){
+        self.disclaimerViewController = segue.destinationViewController;
+        ((DisclaimerViewController *)(self.disclaimerViewController)).webViewController = self;
+    }
 }
 
 - (void)viewDidLoad {
@@ -176,7 +190,8 @@
 //            blockLabel.text = @"Block Says Reachable";
 //            self.view = mainWebView;
             [self.noReachabilityImageView removeFromSuperview];
-            [self loadView];
+            //NSLog(@"--CALLING LOAD VIEW--");
+            //[self loadView];
 
         });
     };

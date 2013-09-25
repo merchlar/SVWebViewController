@@ -20,5 +20,8 @@
 @property (nonatomic, strong) NSURL *URL;
 @property BOOL isAlreadyLoad;
 @property (weak, nonatomic) IBOutlet UIImageView *noReachabilityImageView;
+@property (nonatomic,strong) UIViewController *disclaimerViewController;
+
+- (void)goBackClicked:(UIBarButtonItem *)sender;
 
 @end
