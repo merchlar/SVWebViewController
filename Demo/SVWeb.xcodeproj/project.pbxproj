@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10C6CA8518045F2500A79A1D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10C6CA8418045F2500A79A1D /* CoreGraphics.framework */; };
+		10C6CA8718045F2C00A79A1D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10C6CA8618045F2C00A79A1D /* SystemConfiguration.framework */; };
+		10C6CAEF18045F5600A79A1D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C6CAAC18045F5600A79A1D /* MBProgressHUD.m */; };
+		10C6CB0118045F5600A79A1D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C6CAD718045F5600A79A1D /* Reachability.m */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -25,6 +29,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		10C6CA8418045F2500A79A1D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		10C6CA8618045F2C00A79A1D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		10C6CAAB18045F5600A79A1D /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		10C6CAAC18045F5600A79A1D /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		10C6CAD618045F5600A79A1D /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		10C6CAD718045F5600A79A1D /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		1A3406D316B7F32300150B11 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SVWebViewController.strings"; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -58,6 +68,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10C6CA8718045F2C00A79A1D /* SystemConfiguration.framework in Frameworks */,
+				10C6CA8518045F2500A79A1D /* CoreGraphics.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				221458A013133B3600ED7D83 /* MessageUI.framework in Frameworks */,
@@ -77,6 +89,34 @@
 				1D3623250D0F684500981E51 /* AppDelegate.m */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		10C6CA8818045F5600A79A1D /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				10C6CA8918045F5600A79A1D /* MBProgressHUD */,
+				10C6CAB318045F5600A79A1D /* Reachability */,
+			);
+			name = lib;
+			path = ../lib;
+			sourceTree = "<group>";
+		};
+		10C6CA8918045F5600A79A1D /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				10C6CAAB18045F5600A79A1D /* MBProgressHUD.h */,
+				10C6CAAC18045F5600A79A1D /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		10C6CAB318045F5600A79A1D /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				10C6CAD618045F5600A79A1D /* Reachability.h */,
+				10C6CAD718045F5600A79A1D /* Reachability.m */,
+			);
+			path = Reachability;
 			sourceTree = "<group>";
 		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
@@ -112,6 +152,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				10C6CA8818045F5600A79A1D /* lib */,
 				D5FA63C416A8707A0087531C /* Default-568h@2x.png */,
 				22F0877114587BBF003ECD31 /* README.textile */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -146,6 +187,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				10C6CA8618045F2C00A79A1D /* SystemConfiguration.framework */,
+				10C6CA8418045F2500A79A1D /* CoreGraphics.framework */,
 				2214589F13133B3600ED7D83 /* MessageUI.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
@@ -229,8 +272,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				10C6CB0118045F5600A79A1D /* Reachability.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				28C286E10D94DF7D0034E888 /* ViewController.m in Sources */,
+				10C6CAEF18045F5600A79A1D /* MBProgressHUD.m in Sources */,
 				221C80AF13BBDA2F005F0AB8 /* SVWebViewController.m in Sources */,
 				22F087701458794B003ECD31 /* SVModalWebViewController.m in Sources */,
 			);
@@ -266,7 +311,7 @@
 				GCC_PREFIX_HEADER = SVWeb_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "SVWeb-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = SVWeb;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -283,7 +328,7 @@
 				GCC_PREFIX_HEADER = SVWeb_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "SVWeb-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = SVWeb;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -9,7 +9,6 @@
 #import "SVWebViewController.h"
 #import "MBProgressHUD.h"
 #import "Reachability.h"
-#import "Flurry.h"
 
 @interface SVWebViewController () <UIWebViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 
