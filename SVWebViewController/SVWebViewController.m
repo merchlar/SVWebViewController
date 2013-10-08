@@ -9,6 +9,7 @@
 #import "SVWebViewController.h"
 #import "MBProgressHUD.h"
 #import "Reachability.h"
+#import "Flurry.h"
 
 @interface SVWebViewController () <UIWebViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 
@@ -41,7 +42,7 @@
 
 @synthesize availableActions;
 
-@synthesize URL, mainWebView;
+@synthesize URL, mainWebView, isAlreadyLoad;
 @synthesize backBarButtonItem, forwardBarButtonItem, refreshBarButtonItem, stopBarButtonItem, actionBarButtonItem, pageActionSheet;
 
 #pragma mark - setters and getters
@@ -207,10 +208,16 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    
+    [Flurry logEvent:@"WEB VIEW"];
+
+    
     NSAssert(self.navigationController, @"SVWebViewController needs to be contained in a UINavigationController. If you are presenting SVWebViewController modally, use SVModalWebViewController instead.");
     
 	[super viewWillAppear:animated];
 	
+    isAlreadyLoad = NO;
+    
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         [self.navigationController setToolbarHidden:NO animated:animated];
     }
@@ -336,7 +343,10 @@
 - (void)webViewDidStartLoad:(UIWebView *)webView {
     
     NSLog(@"webViewDidStartLoad");
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    if (!isAlreadyLoad) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
+    }
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 
     [self updateToolbarItems];
@@ -346,6 +356,8 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     
     NSLog(@"webViewDidFinishLoad");
+    
+    isAlreadyLoad = YES;
 
     [MBProgressHUD hideHUDForView:self.view animated:YES];
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];

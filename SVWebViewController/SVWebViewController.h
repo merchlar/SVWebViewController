@@ -18,6 +18,7 @@
 
 @property (nonatomic, readwrite) SVWebViewControllerAvailableActions availableActions;
 @property (nonatomic, strong) NSURL *URL;
+@property BOOL isAlreadyLoad;
 @property (weak, nonatomic) IBOutlet UIImageView *noReachabilityImageView;
 
 @end
