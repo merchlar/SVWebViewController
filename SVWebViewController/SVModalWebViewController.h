@@ -18,6 +18,7 @@ enum {
 
 typedef NSUInteger SVWebViewControllerAvailableActions;
 
+NSUInteger DeviceSystemMajorVersion();
 
 @class SVWebViewController;
 
@@ -28,5 +29,7 @@ typedef NSUInteger SVWebViewControllerAvailableActions;
 
 @property (nonatomic, strong) UIColor *barsTintColor;
 @property (nonatomic, readwrite) SVWebViewControllerAvailableActions availableActions;
+@property (nonatomic, strong) SVWebViewController *webViewController;
+@property (nonatomic, assign) NSString *doneButtonTitle;
 
 @end

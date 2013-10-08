@@ -9,14 +9,14 @@
 #import <MessageUI/MessageUI.h>
 
 #import "SVModalWebViewController.h"
-#import "CustomViewController.h"
 
-@interface SVWebViewController : CustomViewController
+@interface SVWebViewController : UIViewController
 
 - (id)initWithAddress:(NSString*)urlString;
 - (id)initWithURL:(NSURL*)URL;
 
 @property (nonatomic, readwrite) SVWebViewControllerAvailableActions availableActions;
+@property (nonatomic, assign) BOOL hideToolbar;
 @property (nonatomic, strong) NSURL *URL;
 @property BOOL isAlreadyLoad;
 @property (weak, nonatomic) IBOutlet UIImageView *noReachabilityImageView;

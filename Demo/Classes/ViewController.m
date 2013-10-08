@@ -15,6 +15,10 @@
 - (void)pushWebViewController {
     NSURL *URL = [NSURL URLWithString:@"http://en.wikipedia.org/wiki/Friday_(Rebecca_Black_song)"];
 	SVWebViewController *webViewController = [[SVWebViewController alloc] initWithURL:URL];
+	
+	// uncomment the following line to set bar tint color under iOS 7
+	//self.navigationController.navigationBar.barTintColor = [UIColor redColor];
+	
 	[self.navigationController pushViewController:webViewController animated:YES];
 }
 
@@ -24,6 +28,10 @@
 	SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithURL:URL];
 	webViewController.modalPresentationStyle = UIModalPresentationPageSheet;
     webViewController.availableActions = SVWebViewControllerAvailableActionsOpenInSafari | SVWebViewControllerAvailableActionsOpenInChrome | SVWebViewControllerAvailableActionsCopyLink | SVWebViewControllerAvailableActionsMailLink;
+	
+	// uncomment the following line to set bar tint color under iOS 7
+	//webViewController.barsTintColor = [UIColor redColor];
+	
 	[self presentModalViewController:webViewController animated:YES];	
 }
 
