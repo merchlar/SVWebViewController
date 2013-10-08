@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10C6CA1D1804516C00A79A1D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C6CA0C1804516C00A79A1D /* Reachability.m */; };
+		10C6CA651804518400A79A1D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C6CA491804518400A79A1D /* MBProgressHUD.m */; };
+		10C6CA70180451B600A79A1D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10C6CA6F180451B600A79A1D /* CoreGraphics.framework */; };
+		10C6CA72180451BE00A79A1D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10C6CA71180451BE00A79A1D /* SystemConfiguration.framework */; };
+		10C6CA76180453AD00A79A1D /* NoConnectionView-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10C6CA75180453AD00A79A1D /* NoConnectionView-iPhone.xib */; };
+		10C6CA7A1804540E00A79A1D /* NoConnectionView-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10C6CA791804540E00A79A1D /* NoConnectionView-iPad.xib */; };
+		10C6CA821804576F00A79A1D /* no-connection.png in Resources */ = {isa = PBXBuildFile; fileRef = 10C6CA7C1804576F00A79A1D /* no-connection.png */; };
+		10C6CA831804576F00A79A1D /* no-connection@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10C6CA7E1804576F00A79A1D /* no-connection@2x.png */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -25,6 +33,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		10C6CA0B1804516C00A79A1D /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		10C6CA0C1804516C00A79A1D /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		10C6CA481804518300A79A1D /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		10C6CA491804518400A79A1D /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		10C6CA6F180451B600A79A1D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		10C6CA71180451BE00A79A1D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		10C6CA75180453AD00A79A1D /* NoConnectionView-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "NoConnectionView-iPhone.xib"; sourceTree = "<group>"; };
+		10C6CA791804540E00A79A1D /* NoConnectionView-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "NoConnectionView-iPad.xib"; sourceTree = "<group>"; };
+		10C6CA7D1804576F00A79A1D /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/no-connection.png"; sourceTree = "<group>"; };
+		10C6CA7F1804576F00A79A1D /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/no-connection@2x.png"; sourceTree = "<group>"; };
+		10C6CA801804576F00A79A1D /* fr */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fr; path = "fr.lproj/no-connection.png"; sourceTree = "<group>"; };
+		10C6CA811804576F00A79A1D /* fr */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fr; path = "fr.lproj/no-connection@2x.png"; sourceTree = "<group>"; };
 		1A3406D316B7F32300150B11 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SVWebViewController.strings"; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -58,6 +78,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10C6CA72180451BE00A79A1D /* SystemConfiguration.framework in Frameworks */,
+				10C6CA70180451B600A79A1D /* CoreGraphics.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				221458A013133B3600ED7D83 /* MessageUI.framework in Frameworks */,
@@ -79,6 +101,43 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		10C6C9221804512D00A79A1D /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				10C6CA261804518300A79A1D /* MBProgressHUD */,
+				10C6C9E81804516B00A79A1D /* Reachability */,
+			);
+			name = lib;
+			path = ../lib;
+			sourceTree = "<group>";
+		};
+		10C6C9E81804516B00A79A1D /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				10C6CA0B1804516C00A79A1D /* Reachability.h */,
+				10C6CA0C1804516C00A79A1D /* Reachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		10C6CA261804518300A79A1D /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				10C6CA481804518300A79A1D /* MBProgressHUD.h */,
+				10C6CA491804518400A79A1D /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		10C6CA7B1804576F00A79A1D /* NoConnection */ = {
+			isa = PBXGroup;
+			children = (
+				10C6CA7C1804576F00A79A1D /* no-connection.png */,
+				10C6CA7E1804576F00A79A1D /* no-connection@2x.png */,
+			);
+			path = NoConnection;
+			sourceTree = "<group>";
+		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -90,12 +149,15 @@
 		2214586C13132D3200ED7D83 /* SVWebViewController */ = {
 			isa = PBXGroup;
 			children = (
+				10C6CA7B1804576F00A79A1D /* NoConnection */,
 				22F0876E1458794B003ECD31 /* SVModalWebViewController.h */,
 				22F0876F1458794B003ECD31 /* SVModalWebViewController.m */,
 				221C80AD13BBDA2F005F0AB8 /* SVWebViewController.h */,
 				221C80AE13BBDA2F005F0AB8 /* SVWebViewController.m */,
 				220F0B9E138E0EF400F59FC3 /* SVWebViewController.bundle */,
 				D53D8F1516A8688600711E30 /* SVWebViewController.strings */,
+				10C6CA75180453AD00A79A1D /* NoConnectionView-iPhone.xib */,
+				10C6CA791804540E00A79A1D /* NoConnectionView-iPad.xib */,
 			);
 			name = SVWebViewController;
 			path = ../SVWebViewController;
@@ -112,6 +174,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				10C6C9221804512D00A79A1D /* lib */,
 				D5FA63C416A8707A0087531C /* Default-568h@2x.png */,
 				22F0877114587BBF003ECD31 /* README.textile */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -146,6 +209,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				10C6CA71180451BE00A79A1D /* SystemConfiguration.framework */,
+				10C6CA6F180451B600A79A1D /* CoreGraphics.framework */,
 				2214589F13133B3600ED7D83 /* MessageUI.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
@@ -213,11 +278,15 @@
 			files = (
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				28F335F11007B36200424DE2 /* ViewController.xib in Resources */,
+				10C6CA831804576F00A79A1D /* no-connection@2x.png in Resources */,
+				10C6CA821804576F00A79A1D /* no-connection.png in Resources */,
 				22473B9C133800DD00F497E6 /* MainWindow-iPad.xib in Resources */,
 				220F0B9F138E0EF400F59FC3 /* SVWebViewController.bundle in Resources */,
+				10C6CA76180453AD00A79A1D /* NoConnectionView-iPhone.xib in Resources */,
 				22F0877214587BBF003ECD31 /* README.textile in Resources */,
 				D53D8F1316A8688600711E30 /* SVWebViewController.strings in Resources */,
 				D5FA63C516A8707A0087531C /* Default-568h@2x.png in Resources */,
+				10C6CA7A1804540E00A79A1D /* NoConnectionView-iPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,15 +299,35 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
+				10C6CA1D1804516C00A79A1D /* Reachability.m in Sources */,
 				28C286E10D94DF7D0034E888 /* ViewController.m in Sources */,
 				221C80AF13BBDA2F005F0AB8 /* SVWebViewController.m in Sources */,
 				22F087701458794B003ECD31 /* SVModalWebViewController.m in Sources */,
+				10C6CA651804518400A79A1D /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		10C6CA7C1804576F00A79A1D /* no-connection.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				10C6CA7D1804576F00A79A1D /* en */,
+				10C6CA801804576F00A79A1D /* fr */,
+			);
+			name = "no-connection.png";
+			sourceTree = "<group>";
+		};
+		10C6CA7E1804576F00A79A1D /* no-connection@2x.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				10C6CA7F1804576F00A79A1D /* en */,
+				10C6CA811804576F00A79A1D /* fr */,
+			);
+			name = "no-connection@2x.png";
+			sourceTree = "<group>";
+		};
 		D53D8F1516A8688600711E30 /* SVWebViewController.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -267,7 +356,7 @@
 				GCC_PREFIX_HEADER = SVWeb_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "SVWeb-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = SVWeb;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -285,7 +374,7 @@
 				GCC_PREFIX_HEADER = SVWeb_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "SVWeb-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = SVWeb;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

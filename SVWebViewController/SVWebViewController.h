@@ -9,7 +9,6 @@
 #import <MessageUI/MessageUI.h>
 #import "MBProgressHUD.h"
 #import "SVModalWebViewController.h"
-//#import "CustomViewController.h"
 
 @interface SVWebViewController : UIViewController
 
@@ -18,7 +17,6 @@
 
 @property (nonatomic, readwrite) SVWebViewControllerAvailableActions availableActions;
 @property (nonatomic, strong) NSURL *URL;
-//@property (weak, nonatomic) IBOutlet UIImageView *noReachabilityImageView;
 @property (nonatomic, strong) MBProgressHUD * currentLoader;
 @property (strong, nonatomic) IBOutlet UIView *noConnectionView;
 @end

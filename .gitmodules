@@ -1,3 +1,6 @@
 [submodule "lib/Reachability"]
 	path = lib/Reachability
 	url = https://github.com/tonymillion/Reachability.git
+[submodule "lib/MBProgressHUD"]
+	path = lib/MBProgressHUD
+	url = https://github.com/matej/MBProgressHUD

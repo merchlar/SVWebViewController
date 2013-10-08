@@ -8,7 +8,7 @@
 
 #import "SVWebViewController.h"
 #import "Reachability.h"
-#import "Flurry.h"
+//#import "Flurry.h"
 
 @interface SVWebViewController () <UIWebViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 
@@ -152,7 +152,12 @@
     [self loadURL:self.URL];
     self.view = mainWebView;
 
-
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        self.noConnectionView = [[[NSBundle mainBundle] loadNibNamed:@"NoConnectionView-iPhone" owner:self options:nil] objectAtIndex:0];
+    }
+    else {
+        self.noConnectionView = [[[NSBundle mainBundle] loadNibNamed:@"NoConnectionView-iPad" owner:self options:nil] objectAtIndex:0];
+    }
 }
 
 - (void)viewDidLoad {
@@ -218,20 +223,20 @@
         [self.navigationController setToolbarHidden:NO animated:animated];
     }
     
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];/* initialize your button */
-    UIImage *image = [UIImage imageNamed:@"back-btn~ipad.png"];
-    [button setImage:image forState:UIControlStateNormal];
-    button.frame = CGRectMake(0, 0, (image.size.width *2), (image.size.height *2));
-    [button addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];/* initialize your button */
+//    UIImage *image = [UIImage imageNamed:@"back-btn~ipad.png"];
+//    [button setImage:image forState:UIControlStateNormal];
+//    button.frame = CGRectMake(0, 0, (image.size.width *2), (image.size.height *2));
+//    [button addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+//    self.navigationItem.leftBarButtonItem = barButtonItem;
+//    self.navigationItem.hidesBackButton = YES;
     
-    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
-    self.navigationItem.leftBarButtonItem = barButtonItem;
-    self.navigationItem.hidesBackButton = YES;
+    [self loadURL:[NSURL URLWithString:NSLocalizedStringFromTable(@"Webview_URL",@"SVWebViewController", @"")]];
+    [self setURL:[NSURL URLWithString:NSLocalizedStringFromTable(@"Webview_URL",@"SVWebViewController", @"")]];
     
-    [self loadURL:[NSURL URLWithString:NSLocalizedString(@"Webview_URL", nil)]];
-    [self setURL:[NSURL URLWithString:NSLocalizedString(@"Webview_URL", nil)]];
-    
-    [Flurry logEvent:@"WEBVIEW"];
+//    [Flurry logEvent:@"WEBVIEW"];
 
 }
 
@@ -381,7 +386,7 @@
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
     
-    NSLog(@"didFailLoadWithError");
+    NSLog(@"didFailLoadWithError %@", error);
 
     [MBProgressHUD hideHUDForView:self.view animated:YES];
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];

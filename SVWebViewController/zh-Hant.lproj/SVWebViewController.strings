@@ -4,3 +4,6 @@
 "Copy Link" = "複製網頁連結";
 "Mail Link to this Page" = "以電郵傳送此頁連結";
 "Cancel"="取消";
+
+//webview
+"Webview_URL" = "http://www.littleburgundyshoes.com/ca-eng/flag/appf13";
