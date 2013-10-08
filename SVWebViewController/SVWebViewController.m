@@ -8,7 +8,6 @@
 
 #import "SVWebViewController.h"
 #import "Reachability.h"
-//#import "Flurry.h"
 
 @interface SVWebViewController () <UIWebViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 
@@ -41,7 +40,7 @@
 
 @synthesize availableActions;
 
-@synthesize URL, mainWebView;
+@synthesize URL, mainWebView, isAlreadyLoad;
 @synthesize backBarButtonItem, forwardBarButtonItem, refreshBarButtonItem, stopBarButtonItem, actionBarButtonItem, pageActionSheet;
 
 #pragma mark - setters and getters
@@ -69,7 +68,7 @@
 - (UIBarButtonItem *)refreshBarButtonItem {
     
     if (!refreshBarButtonItem) {
-        refreshBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"SVWebViewController.bundle/iPhone/refresh"] style:UIBarButtonItemStylePlain target:self action:@selector(reloadClicked:)];
+        refreshBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(reloadClicked:)];
     }
     
     return refreshBarButtonItem;
@@ -78,7 +77,7 @@
 - (UIBarButtonItem *)stopBarButtonItem {
     
     if (!stopBarButtonItem) {
-        stopBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"SVWebViewController.bundle/iPhone/stop"] style:UIBarButtonItemStylePlain target:self action:@selector(stopClicked:)];
+        stopBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(stopClicked:)];
     }
     return stopBarButtonItem;
 }
@@ -86,7 +85,7 @@
 - (UIBarButtonItem *)actionBarButtonItem {
     
     if (!actionBarButtonItem) {
-        actionBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"SVWebViewController.bundle/iPhone/action"] style:UIBarButtonItemStylePlain target:self action:@selector(actionButtonClicked:)];
+        actionBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionButtonClicked:)];
     }
     return actionBarButtonItem;
 }
@@ -94,13 +93,13 @@
 - (UIActionSheet *)pageActionSheet {
     
     if(!pageActionSheet) {
-        pageActionSheet = [[UIActionSheet alloc] 
-                        initWithTitle:self.mainWebView.request.URL.absoluteString
-                        delegate:self 
-                        cancelButtonTitle:nil   
-                        destructiveButtonTitle:nil   
-                        otherButtonTitles:nil]; 
-
+        pageActionSheet = [[UIActionSheet alloc]
+						   initWithTitle:self.mainWebView.request.URL.absoluteString
+						   delegate:self
+						   cancelButtonTitle:nil
+						   destructiveButtonTitle:nil
+						   otherButtonTitles:nil];
+		
         if((self.availableActions & SVWebViewControllerAvailableActionsCopyLink) == SVWebViewControllerAvailableActionsCopyLink)
             [pageActionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"Copy Link", @"SVWebViewController", @"")];
         
@@ -154,7 +153,7 @@
 
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         self.noConnectionView = [[[NSBundle mainBundle] loadNibNamed:@"NoConnectionView-iPhone" owner:self options:nil] objectAtIndex:0];
-    }
+}
     else {
         self.noConnectionView = [[[NSBundle mainBundle] loadNibNamed:@"NoConnectionView-iPad" owner:self options:nil] objectAtIndex:0];
     }
@@ -180,8 +179,8 @@
 //            blockLabel.text = @"Block Says Reachable";
 //            self.view = mainWebView;
             [self.noConnectionView removeFromSuperview];
-            [self loadView];
-
+//            [self loadView];
+			// TODO : maybe we need to reload the page here
         });
     };
     
@@ -215,10 +214,12 @@
     NSAssert(self.navigationController, @"SVWebViewController needs to be contained in a UINavigationController. If you are presenting SVWebViewController modally, use SVModalWebViewController instead.");
     
 	[super viewWillAppear:animated];
-    
+	
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     
 	
+    isAlreadyLoad = NO;
+    
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         [self.navigationController setToolbarHidden:NO animated:animated];
     }
@@ -233,8 +234,8 @@
 //    self.navigationItem.leftBarButtonItem = barButtonItem;
 //    self.navigationItem.hidesBackButton = YES;
     
-    [self loadURL:[NSURL URLWithString:NSLocalizedStringFromTable(@"Webview_URL",@"SVWebViewController", @"")]];
-    [self setURL:[NSURL URLWithString:NSLocalizedStringFromTable(@"Webview_URL",@"SVWebViewController", @"")]];
+//    [self loadURL:[NSURL URLWithString:NSLocalizedStringFromTable(@"Webview_URL",@"SVWebViewController", @"")]];
+//    [self setURL:[NSURL URLWithString:NSLocalizedStringFromTable(@"Webview_URL",@"SVWebViewController", @"")]];
     
 //    [Flurry logEvent:@"WEBVIEW"];
 
@@ -243,6 +244,11 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
+	if (DeviceSystemMajorVersion() >= 7) {
+		[self hideActionSheetIfVisible];
+	}
+	
+	
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         [self.navigationController setToolbarHidden:YES animated:animated];
     }
@@ -273,6 +279,13 @@
 #pragma mark - Toolbar
 
 - (void)updateToolbarItems {
+	
+	if (self.hideToolbar) {
+		self.navigationItem.rightBarButtonItems = nil;
+		 [self.navigationController setToolbarHidden:YES animated:NO];
+		return;
+	}
+	
     self.backBarButtonItem.enabled = self.mainWebView.canGoBack;
     self.forwardBarButtonItem.enabled = self.mainWebView.canGoForward;
     self.actionBarButtonItem.enabled = !self.mainWebView.isLoading;
@@ -299,34 +312,56 @@
                      fixedSpace,
                      nil];
         } else {
-            items = [NSArray arrayWithObjects:
-                     fixedSpace,
-                     refreshStopBarButtonItem,
-                     flexibleSpace,
-                     self.backBarButtonItem,
-                     flexibleSpace,
-                     self.forwardBarButtonItem,
-                     flexibleSpace,
-                     self.actionBarButtonItem,
-                     fixedSpace,
-                     nil];
+			
+			if (DeviceSystemMajorVersion() < 7) {
+				
+				items = [NSArray arrayWithObjects:
+						 fixedSpace,
+						 refreshStopBarButtonItem,
+						 flexibleSpace,
+						 self.backBarButtonItem,
+						 flexibleSpace,
+						 self.forwardBarButtonItem,
+						 flexibleSpace,
+						 self.actionBarButtonItem,
+						 fixedSpace,
+						 nil];
+			} else {
+				// iOS 7 Support
+				items = [NSArray arrayWithObjects:
+						 fixedSpace,
+						 self.actionBarButtonItem,
+						 fixedSpace,
+						 self.forwardBarButtonItem,
+						 fixedSpace,
+						 self.backBarButtonItem,
+						 fixedSpace,
+						 refreshStopBarButtonItem,
+						 fixedSpace,
+						 nil];
+			}
         }
         
         UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, toolbarWidth, 44.0f)];
         toolbar.items = items;
-				toolbar.barStyle = self.navigationController.navigationBar.barStyle;
-//        toolbar.tintColor = [UIColor colorWithRed:0.000000F green:0.435294F blue:0.717647F alpha:1.0F];
-
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:toolbar];
-    } 
-    
-    else {
+		toolbar.barStyle = self.navigationController.navigationBar.barStyle;
+		
+        toolbar.tintColor = self.navigationController.navigationBar.tintColor;
+		
+		if (DeviceSystemMajorVersion() < 7)
+			self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:toolbar];
+		else
+			self.navigationItem.rightBarButtonItems = items;
+		
+    } else {
+		// iPhone
+		
         NSArray *items;
         
         if(self.availableActions == 0) {
             items = [NSArray arrayWithObjects:
                      flexibleSpace,
-                     self.backBarButtonItem, 
+                     self.backBarButtonItem,
                      flexibleSpace,
                      self.forwardBarButtonItem,
                      flexibleSpace,
@@ -336,7 +371,7 @@
         } else {
             items = [NSArray arrayWithObjects:
                      fixedSpace,
-                     self.backBarButtonItem, 
+                     self.backBarButtonItem,
                      flexibleSpace,
                      self.forwardBarButtonItem,
                      flexibleSpace,
@@ -347,8 +382,8 @@
                      nil];
         }
         
-				self.navigationController.toolbar.barStyle = self.navigationController.navigationBar.barStyle;
-//				self.navigationController.toolbar.tintColor = [UIColor colorWithRed:0.000000F green:0.435294F blue:0.717647F alpha:1.0F];
+		self.navigationController.toolbar.barStyle = self.navigationController.navigationBar.barStyle;
+		self.navigationController.toolbar.tintColor = self.navigationController.navigationBar.tintColor;
         self.toolbarItems = items;
     }
 }
@@ -359,9 +394,9 @@
 - (void)webViewDidStartLoad:(UIWebView *)webView {
     
     NSLog(@"webViewDidStartLoad");
-
-    if (self.currentLoader == nil) {
-        self.currentLoader = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    if (!isAlreadyLoad) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        isAlreadyLoad = YES;
 
     }
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
@@ -373,15 +408,16 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     
     NSLog(@"webViewDidFinishLoad");
+    
+    isAlreadyLoad = NO;
 
     [MBProgressHUD hideHUDForView:self.view animated:YES];
-//    if (result) {
-        self.currentLoader = nil;
-//    }
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     
-    self.navigationItem.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-    [self updateToolbarItems];
+	if (!self.hideToolbar) {
+		self.navigationItem.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+		[self updateToolbarItems];
+	}
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
@@ -414,14 +450,19 @@
 }
 
 - (void)actionButtonClicked:(id)sender {
-    
-    if(pageActionSheet)
-        return;
 	
-    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-        [self.pageActionSheet showFromBarButtonItem:self.actionBarButtonItem animated:YES];
-    else
-        [self.pageActionSheet showFromToolbar:self.navigationController.toolbar];
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+		if (self.pageActionSheet.visible) {
+			[self.pageActionSheet dismissWithClickedButtonIndex:self.pageActionSheet.cancelButtonIndex animated:NO];
+		} else
+			[self.pageActionSheet showFromBarButtonItem:self.actionBarButtonItem animated:YES];
+	}
+    else {
+		if (self.pageActionSheet.visible) {
+			[self.pageActionSheet dismissWithClickedButtonIndex:self.pageActionSheet.cancelButtonIndex animated:NO];
+		} else
+			[self.pageActionSheet showFromToolbar:self.navigationController.toolbar];
+	}
     
 }
 
@@ -517,6 +558,12 @@
     pageActionSheet = nil;
 }
 
+- (void) hideActionSheetIfVisible {
+	if (self.pageActionSheet.visible) {
+		[self.pageActionSheet dismissWithClickedButtonIndex:self.pageActionSheet.cancelButtonIndex animated:NO];
+	}
+}
+
 #pragma mark -
 #pragma mark MFMailComposeViewControllerDelegate
 
@@ -532,8 +579,19 @@
 #endif
 }
 
-- (void)backAction {
-    [self.navigationController popViewControllerAnimated:YES];
+
+NSUInteger DeviceSystemMajorVersion() {
+    static NSUInteger _deviceSystemMajorVersion = -1;
+    static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		_deviceSystemMajorVersion = [[[[[UIDevice currentDevice] systemVersion] componentsSeparatedByString:@"."] objectAtIndex:0] intValue];
+	});
+	return _deviceSystemMajorVersion;
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
 }
 
 @end

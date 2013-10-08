@@ -13,18 +13,25 @@
 
 
 - (void)pushWebViewController {
-    NSURL *URL = [NSURL URLWithString:@"http://en.wikipedia.org/wiki/Friday_(Rebecca_Black_song)"];
+    NSURL *URL = [NSURL URLWithString:NSLocalizedStringFromTable(@"Webview_URL",@"SVWebViewController", @"")];
 	SVWebViewController *webViewController = [[SVWebViewController alloc] initWithURL:URL];
+	
+	// uncomment the following line to set bar tint color under iOS 7
+	//self.navigationController.navigationBar.barTintColor = [UIColor redColor];
+	
 	[self.navigationController pushViewController:webViewController animated:YES];
 }
 
 
 - (void)presentWebViewController {
-	NSURL *URL = [NSURL URLWithString:@"http://en.wikipedia.org/wiki/Friday_(Rebecca_Black_song)"];
+    NSURL *URL = [NSURL URLWithString:NSLocalizedStringFromTable(@"Webview_URL",@"SVWebViewController", @"")];
 	SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithURL:URL];
 	webViewController.modalPresentationStyle = UIModalPresentationPageSheet;
     webViewController.availableActions = SVWebViewControllerAvailableActionsOpenInSafari | SVWebViewControllerAvailableActionsOpenInChrome | SVWebViewControllerAvailableActionsCopyLink | SVWebViewControllerAvailableActionsMailLink;
-	[self presentModalViewController:webViewController animated:YES];	
+	
+	// uncomment the following line to set bar tint color under iOS 7
+	//webViewController.barsTintColor = [UIColor redColor];
+	[self presentViewController:webViewController animated:YES completion:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

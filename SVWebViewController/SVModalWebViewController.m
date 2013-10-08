@@ -9,13 +9,6 @@
 #import "SVModalWebViewController.h"
 #import "SVWebViewController.h"
 
-@interface SVModalWebViewController ()
-
-@property (nonatomic, strong) SVWebViewController *webViewController;
-
-@end
-
-
 @implementation SVModalWebViewController
 
 @synthesize barsTintColor, availableActions, webViewController;
@@ -30,7 +23,7 @@
 - (id)initWithURL:(NSURL *)URL {
     self.webViewController = [[SVWebViewController alloc] initWithURL:URL];
     if (self = [super initWithRootViewController:self.webViewController]) {
-        self.webViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:webViewController action:@selector(doneButtonClicked:)];
+		self.webViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:webViewController action:@selector(doneButtonClicked:)];
     }
     return self;
 }
@@ -39,7 +32,20 @@
     [super viewWillAppear:NO];
     
     self.webViewController.title = self.title;
-    self.navigationBar.tintColor = self.barsTintColor;
+	
+	if (DeviceSystemMajorVersion() < 7) {
+		self.navigationBar.tintColor = self.barsTintColor;
+	} else {
+		self.navigationBar.barTintColor = self.barsTintColor;
+	}
+	
+	if (DeviceSystemMajorVersion()< 7) {
+		self.navigationBar.barStyle = UIBarStyleBlackOpaque;
+	}
+	
+	if (self.doneButtonTitle.length > 0) {
+		self.webViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:self.doneButtonTitle style:UIButtonTypeRoundedRect target:webViewController action:@selector(doneButtonClicked:)];
+	}
 }
 
 - (void)setAvailableActions:(SVWebViewControllerAvailableActions)newAvailableActions {
