@@ -175,7 +175,7 @@
 //            blockLabel.text = @"Block Says Reachable";
 //            self.view = mainWebView;
             [self.noReachabilityImageView removeFromSuperview];
-            [self loadView];
+//            [self loadView];
 
         });
     };
