@@ -31,8 +31,7 @@
 	
 	// uncomment the following line to set bar tint color under iOS 7
 	//webViewController.barsTintColor = [UIColor redColor];
-	
-	[self presentModalViewController:webViewController animated:YES];	
+	[self presentViewController:webViewController animated:YES completion:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
