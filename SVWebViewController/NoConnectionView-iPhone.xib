@@ -32,6 +32,6 @@
         </view>
     </objects>
     <resources>
-        <image name="no-connection.png" width="261" height="209"/>
+        <image name="no-connection.png" width="126" height="147"/>
     </resources>
 </document>
