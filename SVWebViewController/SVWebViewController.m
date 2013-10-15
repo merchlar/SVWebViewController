@@ -94,7 +94,7 @@
     
     if(!pageActionSheet) {
         pageActionSheet = [[UIActionSheet alloc]
-						   initWithTitle:self.mainWebView.request.URL.absoluteString
+						   initWithTitle:nil
 						   delegate:self
 						   cancelButtonTitle:nil
 						   destructiveButtonTitle:nil
@@ -217,7 +217,8 @@
 	
 //    [self.navigationController setNavigationBarHidden:NO animated:YES];
     
-	
+    self.navigationItem.title = @"SITE WEB";
+
     isAlreadyLoad = NO;
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
@@ -418,7 +419,8 @@
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     
 	if (!self.hideToolbar) {
-		self.navigationItem.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+//		self.navigationItem.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+        self.navigationItem.title = @"SITE WEB";
 		[self updateToolbarItems];
 	}
 }
