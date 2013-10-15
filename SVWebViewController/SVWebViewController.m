@@ -8,7 +8,7 @@
 
 #import "SVWebViewController.h"
 #import "Reachability.h"
-
+#import <objc/runtime.h>
 @interface SVWebViewController () <UIWebViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 
 @property (nonatomic, strong, readonly) UIBarButtonItem *backBarButtonItem;
@@ -99,6 +99,8 @@
 						   cancelButtonTitle:nil
 						   destructiveButtonTitle:nil
 						   otherButtonTitles:nil];
+        
+
 		
         if((self.availableActions & SVWebViewControllerAvailableActionsCopyLink) == SVWebViewControllerAvailableActionsCopyLink)
             [pageActionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"Copy Link", @"SVWebViewController", @"")];
@@ -114,6 +116,24 @@
         
         [pageActionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"Cancel", @"SVWebViewController", @"")];
         pageActionSheet.cancelButtonIndex = [self.pageActionSheet numberOfButtons]-1;
+        
+        int unsigned numMethods;
+        Method *methods = class_copyMethodList(objc_getMetaClass("UIAlertButton"), &numMethods);
+        for (int i = 0; i < numMethods; i++) {
+            NSLog(@"%@", NSStringFromSelector(method_getName(methods[i])));
+        }
+        
+        for (UIView * actionSheetSubview in pageActionSheet.subviews) {
+            // Change the font color if the sub view is a UIButton
+            NSLog(@"actionSheetSubview class : %@", [actionSheetSubview class]);
+//            if ([actionSheetSubview isKindOfClass:[UIButton class]]) {
+                UIButton *button = (UIButton *)actionSheetSubview;
+                [button setTitleColor:[UIColor colorWithRed:(149.0/255.0) green:(49.0/255.0) blue:(26.0/255.0) alpha:1.0] forState:UIControlStateNormal];
+                [button setTitleColor:[UIColor colorWithRed:(149.0/255.0) green:(49.0/255.0) blue:(26.0/255.0) alpha:1.0] forState:UIControlStateSelected];
+                [button setTitleColor:[UIColor colorWithRed:(149.0/255.0) green:(49.0/255.0) blue:(26.0/255.0) alpha:1.0] forState:UIControlStateHighlighted];
+                
+//            }
+        }
     }
     
     return pageActionSheet;
