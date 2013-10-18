@@ -237,7 +237,7 @@
 	
 //    [self.navigationController setNavigationBarHidden:NO animated:YES];
     
-    self.navigationItem.title = @"SITE WEB";
+    self.navigationItem.title = NSLocalizedStringFromTable(@"Webview_TITLE",@"SVWebViewController", @"");
 
     isAlreadyLoad = NO;
     
