@@ -440,7 +440,7 @@
     
 	if (!self.hideToolbar) {
 //		self.navigationItem.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-        self.navigationItem.title = @"SITE WEB";
+//        self.navigationItem.title = @"SITE WEB";
 		[self updateToolbarItems];
 	}
 }
