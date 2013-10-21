@@ -9,6 +9,8 @@
 #import "SVWebViewController.h"
 #import "Reachability.h"
 #import <objc/runtime.h>
+#import "Flurry.h"
+
 @interface SVWebViewController () <UIWebViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 
 @property (nonatomic, strong, readonly) UIBarButtonItem *backBarButtonItem;
@@ -596,6 +598,10 @@
           didFinishWithResult:(MFMailComposeResult)result
                         error:(NSError *)error
 {
+    if (!error) {
+        [Flurry logEvent:@"WEBSITE_SHARE_EMAIL"];
+
+    }
     
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < 60000
 	[self dismissModalViewControllerAnimated:YES];
