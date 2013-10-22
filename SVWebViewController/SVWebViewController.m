@@ -162,7 +162,10 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     [self updateToolbarItems];
-        
+    
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(reachabilityChanged:)
                                                  name:kReachabilityChangedNotification
