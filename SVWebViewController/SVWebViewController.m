@@ -347,13 +347,15 @@
         toolbar.items = items;
 		toolbar.barStyle = self.navigationController.navigationBar.barStyle;
         toolbar.tintColor = self.navigationController.navigationBar.tintColor;
-        toolbar.barTintColor = self.navigationController.navigationBar.barTintColor;
 
 		
 		if (DeviceSystemMajorVersion() < 7)
 			self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:toolbar];
-		else
+		else {
 			self.navigationItem.rightBarButtonItems = items;
+            toolbar.barTintColor = self.navigationController.navigationBar.barTintColor;
+        }
+
 		
     } else {
 		// iPhone
@@ -386,8 +388,12 @@
         
 		self.navigationController.toolbar.barStyle = self.navigationController.navigationBar.barStyle;
 		self.navigationController.toolbar.tintColor = self.navigationController.navigationBar.tintColor;
-        self.navigationController.toolbar.barTintColor = self.navigationController.navigationBar.barTintColor;
-
+        if (DeviceSystemMajorVersion() < 7) {
+            
+        }
+        else {
+            self.navigationController.toolbar.barTintColor = self.navigationController.navigationBar.barTintColor;
+        }
         self.toolbarItems = items;
     }
 }
