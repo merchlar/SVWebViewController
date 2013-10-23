@@ -163,7 +163,7 @@
 	[super viewDidLoad];
     [self updateToolbarItems];
     
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+//    [self.navigationController setNavigationBarHidden:NO animated:YES];
 
     
     [[NSNotificationCenter defaultCenter] addObserver:self
