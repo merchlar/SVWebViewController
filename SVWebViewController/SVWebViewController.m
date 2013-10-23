@@ -9,7 +9,7 @@
 #import "SVWebViewController.h"
 #import "Reachability.h"
 
-@interface SVWebViewController () <UIWebViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
+@interface SVWebViewController () <UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 
 @property (nonatomic, strong, readonly) UIBarButtonItem *backBarButtonItem;
 @property (nonatomic, strong, readonly) UIBarButtonItem *forwardBarButtonItem;
@@ -18,7 +18,7 @@
 @property (nonatomic, strong, readonly) UIBarButtonItem *actionBarButtonItem;
 @property (nonatomic, strong, readonly) UIActionSheet *pageActionSheet;
 
-@property (nonatomic, strong) UIWebView *mainWebView;
+//@property (nonatomic, strong) UIWebView *mainWebView;
 //@property (nonatomic, strong) NSURL *URL;
 
 - (id)initWithAddress:(NSString*)urlString;
@@ -429,7 +429,6 @@
     
 	if (!self.hideToolbar) {
 //		self.navigationItem.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-        self.navigationItem.title = @"SITE WEB";
 		[self updateToolbarItems];
 	}
 }

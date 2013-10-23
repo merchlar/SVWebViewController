@@ -10,7 +10,7 @@
 #import "MBProgressHUD.h"
 #import "SVModalWebViewController.h"
 
-@interface SVWebViewController : UIViewController
+@interface SVWebViewController : UIViewController <UIWebViewDelegate>
 
 - (id)initWithAddress:(NSString*)urlString;
 - (id)initWithURL:(NSURL*)URL;
@@ -22,5 +22,8 @@
 @property (strong, nonatomic) IBOutlet UIView *noConnectionView;
 @property BOOL isAlreadyLoad;
 @property (weak, nonatomic) IBOutlet UIImageView *noReachabilityImageView;
+
+@property (nonatomic, strong) UIWebView *mainWebView;
+
 
 @end

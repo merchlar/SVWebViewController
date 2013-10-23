@@ -1,21 +1,22 @@
 //
-//  SVFaceBookViewController.m
+//  SVWebSiteViewController.m
 //  LiveToune
 //
-//  Created by FrancoisJulien ALCARAZ on 2013-10-22.
+//  Created by FrancoisJulien ALCARAZ on 10/23/2013.
 //  Copyright (c) 2013 Merchlar. All rights reserved.
 //
 
-#import "SVFaceBookViewController.h"
+#import "SVWebSiteViewController.h"
 #import "Flurry.h"
 
-@interface SVFaceBookViewController ()
+@interface SVWebSiteViewController ()
 
 @end
 
-@implementation SVFaceBookViewController
+@implementation SVWebSiteViewController
 
 @synthesize firstPage;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,9 +43,10 @@
     
     [super viewWillAppear:animated];
     
-    self.navigationItem.title = @"FACEBOOK";
+    self.navigationItem.title = @"SITE WEB";
     
     firstPage = YES;
+
     
 }
 
@@ -53,9 +55,10 @@
     [super loadView];
     
     self.mainWebView.delegate = self;
-
+    
     
 }
+
 
 #pragma mark -
 #pragma mark UIWebViewDelegate
@@ -64,31 +67,30 @@
     
     if (firstPage) {
         
-        [Flurry logEvent:@"FACEBOOK_VIEW"];
+        [Flurry logEvent:@"WEBSITE_VIEW"];
         
         firstPage = NO;
-
+        
     }
     
     
     [super webViewDidFinishLoad:webView];
-
-
+    
+    
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
     
     if (firstPage) {
         
-        [Flurry logEvent:@"FACEBOOK_ERROR"];
+        [Flurry logEvent:@"WEBSITE_ERROR"];
         
         firstPage = NO;
         
     }
-    
-    
+        
     [super webView:webView didFailLoadWithError:error];
-
+    
 }
 
 @end
