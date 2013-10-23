@@ -369,7 +369,10 @@
         toolbar.items = items;
 		toolbar.barStyle = self.navigationController.navigationBar.barStyle;
         toolbar.tintColor = self.navigationController.navigationBar.tintColor;
-        toolbar.barTintColor = self.navigationController.navigationBar.barTintColor;
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+            toolbar.barTintColor = self.navigationController.navigationBar.barTintColor;
+
+        }
 
 		
 		if (DeviceSystemMajorVersion() < 7)
@@ -408,8 +411,9 @@
         
 		self.navigationController.toolbar.barStyle = self.navigationController.navigationBar.barStyle;
 		self.navigationController.toolbar.tintColor = self.navigationController.navigationBar.tintColor;
-        self.navigationController.toolbar.barTintColor = self.navigationController.navigationBar.barTintColor;
-
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+            self.navigationController.toolbar.barTintColor = self.navigationController.navigationBar.barTintColor;
+        }
         self.toolbarItems = items;
     }
 }
