@@ -576,10 +576,38 @@
   		[mailViewController setMessageBody:self.mainWebView.request.URL.absoluteString isHTML:NO];
 		mailViewController.modalPresentationStyle = UIModalPresentationFormSheet;
         
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+            [mailViewController.navigationBar setTintColor:[UIColor whiteColor]];
+        }
+        else {
+            [mailViewController.navigationBar setTintColor:[UIColor blueColor]];
+            
+            UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 170.0f, 44.0f)];
+            titleView.backgroundColor = [UIColor clearColor];
+            
+            UILabel *label = [[UILabel alloc] initWithFrame:titleView.bounds];
+            label.textColor = [UIColor whiteColor];
+            label.backgroundColor = [UIColor clearColor];
+            label.text = @"YWFTUltramagnetic-Bold";
+            label.font = [UIFont fontWithName:@"YWFTUltramagnetic-Bold" size:20.0f];
+            label.textAlignment = NSTextAlignmentCenter;
+            
+            [titleView addSubview:label];
+            
+            mailViewController.navigationItem.titleView = titleView;
+
+        }
+
+
+        
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < 60000
 		[self presentModalViewController:mailViewController animated:YES];
 #else
-        [self presentViewController:mailViewController animated:YES completion:NULL];
+        [self presentViewController:mailViewController animated:YES completion:^{
+            
+            
+            
+        }];
 #endif
 	}
     
