@@ -197,6 +197,17 @@
     };
     
     [reach startNotifier];
+    
+    
+    UIButton *backButton = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 24.0f, 16.0f)];
+//    UIImage *backImage = [[UIImage imageNamed:@"back-btn.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 12.0f, 0, 12.0f)];
+    UIImage *backImage = [UIImage imageNamed:@"back-btn.png"];
+
+    [backButton setBackgroundImage:backImage  forState:UIControlStateNormal];
+//    [backButton setTitle:@"Back" forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(popBack) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    self.navigationItem.leftBarButtonItem = backButtonItem;
 }
 
 - (void)viewDidUnload {
