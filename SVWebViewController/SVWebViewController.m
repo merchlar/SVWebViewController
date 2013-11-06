@@ -255,7 +255,6 @@
 //    [self loadURL:[NSURL URLWithString:NSLocalizedStringFromTable(@"Webview_URL",@"SVWebViewController", @"")]];
 //    [self setURL:[NSURL URLWithString:NSLocalizedStringFromTable(@"Webview_URL",@"SVWebViewController", @"")]];
     
-//    [Flurry logEvent:@"WEBVIEW"];
 
 }
 
@@ -443,7 +442,7 @@
     
 	if (!self.hideToolbar) {
 //		self.navigationItem.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-        self.navigationItem.title = @"SITE WEB";
+        self.navigationItem.title = NSLocalizedStringFromTable(@"Webview_TITLE",@"SVWebViewController", @"");
 		[self updateToolbarItems];
 	}
 }
