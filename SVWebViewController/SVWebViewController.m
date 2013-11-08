@@ -579,7 +579,7 @@
             [mailViewController.navigationBar setTintColor:[UIColor whiteColor]];
         }
         else {
-            [mailViewController.navigationBar setTintColor:[UIColor blueColor]];
+            [mailViewController.navigationBar setTintColor:[UIColor colorWithRed:0.168627F green:0.235294F blue:0.517647F alpha:1.0F]];
             
             UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 170.0f, 44.0f)];
             titleView.backgroundColor = [UIColor clearColor];
