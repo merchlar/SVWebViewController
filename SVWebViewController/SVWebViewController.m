@@ -600,9 +600,9 @@ NSUInteger DeviceSystemMajorVersion() {
 	return _deviceSystemMajorVersion;
 }
 
-- (BOOL)prefersStatusBarHidden
-{
-    return YES;
-}
+//- (BOOL)prefersStatusBarHidden
+//{
+//    return YES;
+//}
 
 @end
