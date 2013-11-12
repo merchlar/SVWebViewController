@@ -37,6 +37,7 @@
 		self.navigationBar.tintColor = self.barsTintColor;
 	} else {
 		self.navigationBar.barTintColor = self.barsTintColor;
+        [self.navigationBar setTranslucent:NO];
 	}
 	
 	if (DeviceSystemMajorVersion()< 7) {
