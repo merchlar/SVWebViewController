@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -11,25 +11,38 @@
             <rect key="frame" x="0.0" y="0.0" width="768" height="1004"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-connection.png" translatesAutoresizingMaskIntoConstraints="NO" id="OMI-Ai-JbX">
-                    <rect key="frame" x="0.0" y="0.0" width="768" height="1004"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XyN-kf-kTr">
+                    <rect key="frame" x="0.0" y="317" width="768" height="370"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="error-icon-large.png" translatesAutoresizingMaskIntoConstraints="NO" id="PCi-TF-gqf">
+                            <rect key="frame" x="0.0" y="0.0" width="768" height="245"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        </imageView>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Connexion requise" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uid-P2-ytK">
+                            <rect key="frame" x="128" y="253" width="513" height="70"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="768" id="biu-b9-NXY"/>
+                        <constraint firstAttribute="width" constant="768" id="BdL-UM-ASf"/>
+                        <constraint firstAttribute="height" constant="370" id="O9P-F7-aRO"/>
                     </constraints>
-                </imageView>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="OMI-Ai-JbX" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="3Hc-3c-ea8"/>
-                <constraint firstAttribute="bottom" secondItem="OMI-Ai-JbX" secondAttribute="bottom" id="ZCx-EI-SDc"/>
-                <constraint firstItem="OMI-Ai-JbX" firstAttribute="top" secondItem="1" secondAttribute="top" id="Zip-bB-nyh"/>
-                <constraint firstAttribute="trailing" secondItem="OMI-Ai-JbX" secondAttribute="trailing" id="aTr-WF-h9c"/>
+                <constraint firstAttribute="centerX" secondItem="XyN-kf-kTr" secondAttribute="centerX" id="4Xm-W0-mKC"/>
+                <constraint firstAttribute="centerY" secondItem="XyN-kf-kTr" secondAttribute="centerY" id="P59-GJ-ctU"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
         </view>
     </objects>
     <resources>
-        <image name="no-connection.png" width="261" height="209"/>
+        <image name="error-icon-large.png" width="167" height="148"/>
     </resources>
 </document>
