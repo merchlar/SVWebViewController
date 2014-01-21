@@ -13,8 +13,6 @@
 		10C6CA72180451BE00A79A1D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10C6CA71180451BE00A79A1D /* SystemConfiguration.framework */; };
 		10C6CA76180453AD00A79A1D /* NoConnectionView-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10C6CA75180453AD00A79A1D /* NoConnectionView-iPhone.xib */; };
 		10C6CA7A1804540E00A79A1D /* NoConnectionView-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10C6CA791804540E00A79A1D /* NoConnectionView-iPad.xib */; };
-		10C6CA821804576F00A79A1D /* no-connection.png in Resources */ = {isa = PBXBuildFile; fileRef = 10C6CA7C1804576F00A79A1D /* no-connection.png */; };
-		10C6CA831804576F00A79A1D /* no-connection@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10C6CA7E1804576F00A79A1D /* no-connection@2x.png */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -25,6 +23,10 @@
 		22473B9C133800DD00F497E6 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22473B9B133800DD00F497E6 /* MainWindow-iPad.xib */; };
 		22F087701458794B003ECD31 /* SVModalWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F0876F1458794B003ECD31 /* SVModalWebViewController.m */; };
 		22F0877214587BBF003ECD31 /* README.textile in Resources */ = {isa = PBXBuildFile; fileRef = 22F0877114587BBF003ECD31 /* README.textile */; };
+		24A46E2C188ECD9D00C059E7 /* error-icon-large@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 24A46E28188ECD9D00C059E7 /* error-icon-large@2x~ipad.png */; };
+		24A46E2D188ECD9D00C059E7 /* error-icon-large@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 24A46E29188ECD9D00C059E7 /* error-icon-large@2x~iphone.png */; };
+		24A46E2E188ECD9D00C059E7 /* error-icon-large~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 24A46E2A188ECD9D00C059E7 /* error-icon-large~ipad.png */; };
+		24A46E2F188ECD9D00C059E7 /* error-icon-large~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 24A46E2B188ECD9D00C059E7 /* error-icon-large~iphone.png */; };
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		28C286E10D94DF7D0034E888 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* ViewController.m */; };
 		28F335F11007B36200424DE2 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F335F01007B36200424DE2 /* ViewController.xib */; };
@@ -41,10 +43,6 @@
 		10C6CA71180451BE00A79A1D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		10C6CA75180453AD00A79A1D /* NoConnectionView-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "NoConnectionView-iPhone.xib"; sourceTree = "<group>"; };
 		10C6CA791804540E00A79A1D /* NoConnectionView-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "NoConnectionView-iPad.xib"; sourceTree = "<group>"; };
-		10C6CA7D1804576F00A79A1D /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/no-connection.png"; sourceTree = "<group>"; };
-		10C6CA7F1804576F00A79A1D /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/no-connection@2x.png"; sourceTree = "<group>"; };
-		10C6CA801804576F00A79A1D /* fr */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fr; path = "fr.lproj/no-connection.png"; sourceTree = "<group>"; };
-		10C6CA811804576F00A79A1D /* fr */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fr; path = "fr.lproj/no-connection@2x.png"; sourceTree = "<group>"; };
 		1A3406D316B7F32300150B11 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SVWebViewController.strings"; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -59,6 +57,10 @@
 		22F0876E1458794B003ECD31 /* SVModalWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVModalWebViewController.h; sourceTree = "<group>"; };
 		22F0876F1458794B003ECD31 /* SVModalWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVModalWebViewController.m; sourceTree = "<group>"; };
 		22F0877114587BBF003ECD31 /* README.textile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.textile; path = ../README.textile; sourceTree = "<group>"; };
+		24A46E28188ECD9D00C059E7 /* error-icon-large@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error-icon-large@2x~ipad.png"; sourceTree = "<group>"; };
+		24A46E29188ECD9D00C059E7 /* error-icon-large@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error-icon-large@2x~iphone.png"; sourceTree = "<group>"; };
+		24A46E2A188ECD9D00C059E7 /* error-icon-large~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error-icon-large~ipad.png"; sourceTree = "<group>"; };
+		24A46E2B188ECD9D00C059E7 /* error-icon-large~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error-icon-large~iphone.png"; sourceTree = "<group>"; };
 		28A0AAE50D9B0CCF005BE974 /* SVWeb_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWeb_Prefix.pch; sourceTree = "<group>"; };
 		28AD735F0D9D9599002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		28C286DF0D94DF7D0034E888 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -129,15 +131,6 @@
 			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
-		10C6CA7B1804576F00A79A1D /* NoConnection */ = {
-			isa = PBXGroup;
-			children = (
-				10C6CA7C1804576F00A79A1D /* no-connection.png */,
-				10C6CA7E1804576F00A79A1D /* no-connection@2x.png */,
-			);
-			path = NoConnection;
-			sourceTree = "<group>";
-		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,7 +142,7 @@
 		2214586C13132D3200ED7D83 /* SVWebViewController */ = {
 			isa = PBXGroup;
 			children = (
-				10C6CA7B1804576F00A79A1D /* NoConnection */,
+				24A46E27188ECD9D00C059E7 /* Assets */,
 				22F0876E1458794B003ECD31 /* SVModalWebViewController.h */,
 				22F0876F1458794B003ECD31 /* SVModalWebViewController.m */,
 				221C80AD13BBDA2F005F0AB8 /* SVWebViewController.h */,
@@ -169,6 +162,17 @@
 				22473B9B133800DD00F497E6 /* MainWindow-iPad.xib */,
 			);
 			name = "Resources-iPad";
+			sourceTree = "<group>";
+		};
+		24A46E27188ECD9D00C059E7 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				24A46E28188ECD9D00C059E7 /* error-icon-large@2x~ipad.png */,
+				24A46E29188ECD9D00C059E7 /* error-icon-large@2x~iphone.png */,
+				24A46E2A188ECD9D00C059E7 /* error-icon-large~ipad.png */,
+				24A46E2B188ECD9D00C059E7 /* error-icon-large~iphone.png */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
@@ -278,15 +282,17 @@
 			files = (
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				28F335F11007B36200424DE2 /* ViewController.xib in Resources */,
-				10C6CA831804576F00A79A1D /* no-connection@2x.png in Resources */,
-				10C6CA821804576F00A79A1D /* no-connection.png in Resources */,
 				22473B9C133800DD00F497E6 /* MainWindow-iPad.xib in Resources */,
+				24A46E2C188ECD9D00C059E7 /* error-icon-large@2x~ipad.png in Resources */,
+				24A46E2E188ECD9D00C059E7 /* error-icon-large~ipad.png in Resources */,
 				220F0B9F138E0EF400F59FC3 /* SVWebViewController.bundle in Resources */,
+				24A46E2F188ECD9D00C059E7 /* error-icon-large~iphone.png in Resources */,
 				10C6CA76180453AD00A79A1D /* NoConnectionView-iPhone.xib in Resources */,
 				22F0877214587BBF003ECD31 /* README.textile in Resources */,
 				D53D8F1316A8688600711E30 /* SVWebViewController.strings in Resources */,
 				D5FA63C516A8707A0087531C /* Default-568h@2x.png in Resources */,
 				10C6CA7A1804540E00A79A1D /* NoConnectionView-iPad.xib in Resources */,
+				24A46E2D188ECD9D00C059E7 /* error-icon-large@2x~iphone.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,24 +316,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		10C6CA7C1804576F00A79A1D /* no-connection.png */ = {
-			isa = PBXVariantGroup;
-			children = (
-				10C6CA7D1804576F00A79A1D /* en */,
-				10C6CA801804576F00A79A1D /* fr */,
-			);
-			name = "no-connection.png";
-			sourceTree = "<group>";
-		};
-		10C6CA7E1804576F00A79A1D /* no-connection@2x.png */ = {
-			isa = PBXVariantGroup;
-			children = (
-				10C6CA7F1804576F00A79A1D /* en */,
-				10C6CA811804576F00A79A1D /* fr */,
-			);
-			name = "no-connection@2x.png";
-			sourceTree = "<group>";
-		};
 		D53D8F1516A8688600711E30 /* SVWebViewController.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
