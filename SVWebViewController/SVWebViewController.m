@@ -217,7 +217,7 @@
 	
 //    [self.navigationController setNavigationBarHidden:NO animated:YES];
     
-    self.navigationItem.title = @"SITE WEB";
+    self.navigationItem.title = @"WEBSITE";
 
     isAlreadyLoad = NO;
     
@@ -426,7 +426,7 @@
     
 	if (!self.hideToolbar) {
 //		self.navigationItem.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-        self.navigationItem.title = @"SITE WEB";
+        self.navigationItem.title = @"WEBSITE";
 		[self updateToolbarItems];
 	}
 }
