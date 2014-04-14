@@ -13,25 +13,17 @@
 
 
 - (void)pushWebViewController {
-    NSURL *URL = [NSURL URLWithString:NSLocalizedStringFromTable(@"Webview_URL",@"SVWebViewController", @"")];
+    NSURL *URL = [NSURL URLWithString:@"http://samvermette.com"];
 	SVWebViewController *webViewController = [[SVWebViewController alloc] initWithURL:URL];
-	
-	// uncomment the following line to set bar tint color under iOS 7
-	//self.navigationController.navigationBar.barTintColor = [UIColor redColor];
-	
 	[self.navigationController pushViewController:webViewController animated:YES];
 }
 
 
 - (void)presentWebViewController {
-    NSURL *URL = [NSURL URLWithString:NSLocalizedStringFromTable(@"Webview_URL",@"SVWebViewController", @"")];
+	NSURL *URL = [NSURL URLWithString:@"http://samvermette.com"];
 	SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithURL:URL];
 	webViewController.modalPresentationStyle = UIModalPresentationPageSheet;
-    webViewController.availableActions = SVWebViewControllerAvailableActionsOpenInSafari | SVWebViewControllerAvailableActionsOpenInChrome | SVWebViewControllerAvailableActionsCopyLink | SVWebViewControllerAvailableActionsMailLink;
-	
-	// uncomment the following line to set bar tint color under iOS 7
-	//webViewController.barsTintColor = [UIColor redColor];
-	[self presentViewController:webViewController animated:YES completion:nil];
+    [self presentViewController:webViewController animated:YES completion:NULL];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

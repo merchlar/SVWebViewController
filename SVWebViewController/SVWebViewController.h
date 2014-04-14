@@ -15,7 +15,6 @@
 - (id)initWithAddress:(NSString*)urlString;
 - (id)initWithURL:(NSURL*)URL;
 
-@property (nonatomic, readwrite) SVWebViewControllerAvailableActions availableActions;
 @property (nonatomic, assign) BOOL hideToolbar;
 @property (nonatomic, strong) NSURL *URL;
 @property (nonatomic, strong) MBProgressHUD * currentLoader;

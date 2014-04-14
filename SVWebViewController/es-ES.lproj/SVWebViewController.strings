@@ -1,8 +1,12 @@
 // Copyright (c) 2013 Alex Ruperez
 "Open in Safari" = "Abrir en Safari";
+<<<<<<< HEAD
 "Open in Chrome" = "Abrir en Chrome";
 "Copy Link" = "Copiar Enlace";
 "Mail Link to this Page" = "Enviar Enlace a esta Página";
 
 //webview
 "Webview_URL" = "http://www.hungergames-lembrasement.ca";
+=======
+"Open in Chrome" = "Abrir en Chrome";
+>>>>>>> 6448313a52d0e8a45068b5e4d1dfe63b20c756e7
