@@ -63,6 +63,16 @@
     [self.webView loadRequest:[NSURLRequest requestWithURL:pageURL]];
 }
 
+- (void)setURL:(NSURL *)URL {
+    
+    if (_URL != URL) {
+        _URL = URL;
+        [self loadURL:URL];
+
+    }
+    
+}
+
 #pragma mark - View lifecycle
 
 - (void)loadView {
