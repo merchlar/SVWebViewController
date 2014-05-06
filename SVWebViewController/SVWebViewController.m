@@ -247,6 +247,8 @@
         [self.navigationController setToolbarHidden:NO animated:animated];
     }
     
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0.007843F green:0.380392F blue:0.211765F alpha:0.8F]];
+    
 //    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];/* initialize your button */
 //    UIImage *image = [UIImage imageNamed:@"back-btn~ipad.png"];
 //    [button setImage:image forState:UIControlStateNormal];
