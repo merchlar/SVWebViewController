@@ -12,6 +12,8 @@
 #import "Flurry.h"
 #import "DisclaimerViewController.h"
 
+#import "MAlertSegue.h"
+
 @interface SVWebViewController () <UIWebViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 
 @property (nonatomic, strong, readonly) UIBarButtonItem *backBarButtonItem;
@@ -159,15 +161,25 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [self performSegueWithIdentifier:@"openDisclaimer" sender:self];
+    //[self performSegueWithIdentifier:@"openDisclaimer" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"openDisclaimer" ]){
+        //[(MAlertSegue*)segue setSkipAnimation:YES];
         self.disclaimerViewController = segue.destinationViewController;
         ((DisclaimerViewController *)(self.disclaimerViewController)).webViewController = self;
     }
+}
+
+- (void)openDisclaimer:(UIViewController*)disclaimerVC
+{
+    MAlertSegue *segue = [[MAlertSegue alloc] initWithIdentifier:@"openDisclaimer" source:self destination:disclaimerVC];
+    
+    [self prepareForSegue:segue sender:self];
+    
+    [segue perform];
 }
 
 - (void)viewDidLoad {
@@ -238,6 +250,10 @@
     }
     
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+    
+    [self openDisclaimer:[self.storyboard instantiateViewControllerWithIdentifier:@"Disclaimer"]];
+    
+    //[self performSegueWithIdentifier:@"openDisclaimer" sender:self];
     
 }
 
