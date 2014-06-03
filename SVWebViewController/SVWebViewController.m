@@ -259,6 +259,12 @@
         toolbar.items = items;
         toolbar.barStyle = self.navigationController.navigationBar.barStyle;
         toolbar.tintColor = self.navigationController.navigationBar.tintColor;
+        [toolbar setTranslucent:NO];
+        [toolbar setBarTintColor:[UIColor colorWithRed:0.039216F green:0.039216F blue:0.039216F alpha:1.0F]];
+        [toolbar setTintColor:[UIColor whiteColor]];
+        [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0.039216F green:0.039216F blue:0.039216F alpha:1.0F]];
+        [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+        [self.navigationController.navigationBar setTranslucent:NO];
         self.navigationItem.rightBarButtonItems = items.reverseObjectEnumerator.allObjects;
     }
     
@@ -277,6 +283,12 @@
         
         self.navigationController.toolbar.barStyle = self.navigationController.navigationBar.barStyle;
         self.navigationController.toolbar.tintColor = self.navigationController.navigationBar.tintColor;
+        [self.navigationController.toolbar setTranslucent:NO];
+        [self.navigationController.toolbar setTintColor:[UIColor whiteColor]];
+        [self.navigationController.toolbar setBarTintColor:[UIColor colorWithRed:0.039216F green:0.039216F blue:0.039216F alpha:1.0F]];
+        [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0.039216F green:0.039216F blue:0.039216F alpha:1.0F]];
+        [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+        [self.navigationController.navigationBar setTranslucent:NO];
         self.toolbarItems = items;
     }
 }
