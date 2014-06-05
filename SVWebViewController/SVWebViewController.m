@@ -144,7 +144,7 @@
 	
 //    [self.navigationController setNavigationBarHidden:NO animated:YES];
     
-    self.navigationItem.title = @"SITE WEB";
+    self.navigationItem.title = self.pageTitle;
 
     _isAlreadyLoad = NO;
     
@@ -318,7 +318,7 @@
     [MBProgressHUD hideHUDForView:self.view animated:YES];
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     
-    self.navigationItem.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    self.navigationItem.title = self.pageTitle;
     [self updateToolbarItems];
 }
 
