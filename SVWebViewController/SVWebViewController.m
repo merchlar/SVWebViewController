@@ -257,8 +257,8 @@
         
         UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, toolbarWidth, 44.0f)];
         toolbar.items = items;
-        toolbar.barStyle = self.navigationController.navigationBar.barStyle;
-        toolbar.tintColor = self.navigationController.navigationBar.tintColor;
+        //toolbar.barStyle = self.navigationController.navigationBar.barStyle;
+        //toolbar.tintColor = self.navigationController.navigationBar.tintColor;
         self.navigationItem.rightBarButtonItems = items.reverseObjectEnumerator.allObjects;
     }
     
@@ -275,8 +275,8 @@
                           fixedSpace,
                           nil];
         
-        self.navigationController.toolbar.barStyle = self.navigationController.navigationBar.barStyle;
-        self.navigationController.toolbar.tintColor = self.navigationController.navigationBar.tintColor;
+        //self.navigationController.toolbar.barStyle = self.navigationController.navigationBar.barStyle;
+        //self.navigationController.toolbar.tintColor = self.navigationController.navigationBar.tintColor;
         self.toolbarItems = items;
     }
 }
@@ -372,9 +372,18 @@
 //        notificationLabel.text = @"Notification Says Unreachable";
 //        self.view = self.noConnectionView;
         
+        [self.noConnectionView setFrame:[[[self.webView subviews] objectAtIndex:0] bounds]];
+        
+        [self.noConnectionView setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
+        
         [[[self.webView subviews] objectAtIndex:0] addSubview:self.noConnectionView];
 
     }
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 
