@@ -28,14 +28,15 @@
 - (id)initWithURL:(NSURL *)URL {
     self.webViewController = [[SVWebViewController alloc] initWithURL:URL];
     if (self = [super initWithRootViewController:self.webViewController]) {
-        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                                    target:self.webViewController
-                                                                                    action:@selector(doneButtonClicked:)];
-        
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+//        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+//                                                                                    target:self.webViewController
+//                                                                                    action:@selector(doneButtonClicked:)];
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Fermer" style:UIBarButtonItemStyleBordered target:self.webViewController action:@selector(doneButtonClicked:)];
+        [doneButton setTintColor:[UIColor whiteColor]];
+//        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
             self.webViewController.navigationItem.leftBarButtonItem = doneButton;
-        else
-            self.webViewController.navigationItem.rightBarButtonItem = doneButton;
+//        else
+//            self.webViewController.navigationItem.rightBarButtonItem = doneButton;
     }
     return self;
 }
