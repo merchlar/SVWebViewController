@@ -10,6 +10,7 @@
 #import "SVWebViewControllerActivitySafari.h"
 #import "SVWebViewController.h"
 #import "Reachability.h"
+#import "AppDelegate.h"
 
 @interface SVWebViewController () <UIWebViewDelegate>
 
@@ -343,6 +344,18 @@
     NSArray *activities = @[[SVWebViewControllerActivitySafari new], [SVWebViewControllerActivityChrome new]];
     NSURL *url = self.webView.request.URL ? self.webView.request.URL : self.URL;
     UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:@[url] applicationActivities:activities];
+    [activityController setCompletionHandler:^(NSString *activityType, BOOL completed) {
+        NSLog(@"completed dialog - activity: %@ - finished flag: %d", activityType, completed);
+        
+        [(AppDelegate *)[[UIApplication sharedApplication] delegate] styleApp];
+        
+        if (completed) {
+            
+        }
+        
+    }];
+    
+    [(AppDelegate *)[[UIApplication sharedApplication] delegate] unStyleApp];
     [self presentViewController:activityController animated:YES completion:nil];
 }
 
