@@ -11,6 +11,7 @@
 #import "SVWebViewController.h"
 #import "Reachability.h"
 #import "AppDelegate.h"
+#import "Flurry.h"
 
 @interface SVWebViewController () <UIWebViewDelegate>
 
@@ -121,6 +122,9 @@
             NSLog(@"viewDidLoad unreachableBlock");
 //            [self.view addSubview:self.noConnectionView];
             [[[self.webView subviews] objectAtIndex:0] addSubview:self.noConnectionView];
+            
+            [Flurry logError:@"FB_ERROR_VIEW" message:@"no connection available" error:nil];
+
 
         });
     };
@@ -152,6 +156,8 @@
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         [self.navigationController setToolbarHidden:NO animated:animated];
     }
+    
+    [Flurry logEvent:@"FB_VIEW"];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -314,6 +320,10 @@
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
     
     NSLog(@"didFailLoadWithError %@", error);
+    
+    
+    [Flurry logError:@"FB_ERROR_VIEW" message:@"unable to reach webpage" error:error];
+
 
     [MBProgressHUD hideHUDForView:self.view animated:YES];
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
@@ -341,6 +351,9 @@
 }
 
 - (void)actionButtonClicked:(id)sender {
+    
+    [Flurry logEvent:@"FB_SHARE_TAPPED"];
+
     NSArray *activities = @[[SVWebViewControllerActivitySafari new], [SVWebViewControllerActivityChrome new]];
     NSURL *url = self.webView.request.URL ? self.webView.request.URL : self.URL;
     UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:@[url] applicationActivities:activities];
@@ -350,7 +363,7 @@
         [(AppDelegate *)[[UIApplication sharedApplication] delegate] styleApp];
         
         if (completed) {
-            
+            [Flurry logEvent:@"FB_SHARE_COMPLETED" withParameters:[NSDictionary dictionaryWithObject:activityType forKey:@"NETWORK"]];
         }
         
     }];
@@ -381,6 +394,9 @@
     else
     {
         NSLog(@"reachabilityChanged unreachableBlock");
+        
+        [Flurry logError:@"FB_ERROR_VIEW" message:@"no connection available" error:nil];
+        
 //        [self.view addSubview:self.noConnectionView];
 //        notificationLabel.text = @"Notification Says Unreachable";
 //        self.view = self.noConnectionView;
