@@ -31,7 +31,7 @@
 //        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
 //                                                                                    target:self.webViewController
 //                                                                                    action:@selector(doneButtonClicked:)];
-        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Fermer" style:UIBarButtonItemStyleBordered target:self.webViewController action:@selector(doneButtonClicked:)];
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStyleBordered target:self.webViewController action:@selector(doneButtonClicked:)];
         [doneButton setTintColor:[UIColor whiteColor]];
 //        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
             self.webViewController.navigationItem.leftBarButtonItem = doneButton;

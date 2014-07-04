@@ -10,8 +10,8 @@
 #import "SVWebViewControllerActivitySafari.h"
 #import "SVWebViewController.h"
 #import "Reachability.h"
-#import "AppDelegate.h"
-#import "Flurry.h"
+#import "MAppDelegate.h"
+//#import "Flurry.h"
 
 @interface SVWebViewController () <UIWebViewDelegate>
 
@@ -123,7 +123,7 @@
 //            [self.view addSubview:self.noConnectionView];
             [[[self.webView subviews] objectAtIndex:0] addSubview:self.noConnectionView];
             
-            [Flurry logError:@"FB_ERROR_VIEW" message:@"no connection available" error:nil];
+//            [Flurry logError:@"FB_ERROR_VIEW" message:@"no connection available" error:nil];
 
 
         });
@@ -149,7 +149,7 @@
 	
 //    [self.navigationController setNavigationBarHidden:NO animated:YES];
     
-    self.navigationItem.title = @"FACEBOOK";
+    self.navigationItem.title = @"WEBVIEW";
 
     _isAlreadyLoad = NO;
     
@@ -157,7 +157,7 @@
         [self.navigationController setToolbarHidden:NO animated:animated];
     }
     
-    [Flurry logEvent:@"FB_VIEW"];
+//    [Flurry logEvent:@"FB_VIEW"];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -322,7 +322,7 @@
     NSLog(@"didFailLoadWithError %@", error);
     
     
-    [Flurry logError:@"FB_ERROR_VIEW" message:@"unable to reach webpage" error:error];
+//    [Flurry logError:@"FB_ERROR_VIEW" message:@"unable to reach webpage" error:error];
 
 
     [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -352,7 +352,7 @@
 
 - (void)actionButtonClicked:(id)sender {
     
-    [Flurry logEvent:@"FB_SHARE_TAPPED"];
+//    [Flurry logEvent:@"FB_SHARE_TAPPED"];
 
     NSArray *activities = @[[SVWebViewControllerActivitySafari new], [SVWebViewControllerActivityChrome new]];
     NSURL *url = self.webView.request.URL ? self.webView.request.URL : self.URL;
@@ -360,15 +360,15 @@
     [activityController setCompletionHandler:^(NSString *activityType, BOOL completed) {
         NSLog(@"completed dialog - activity: %@ - finished flag: %d", activityType, completed);
         
-        [(AppDelegate *)[[UIApplication sharedApplication] delegate] styleApp];
+        [(MAppDelegate *)[[UIApplication sharedApplication] delegate] styleApp];
         
         if (completed) {
-            [Flurry logEvent:@"FB_SHARE_COMPLETED" withParameters:[NSDictionary dictionaryWithObject:activityType forKey:@"NETWORK"]];
+            //[Flurry logEvent:@"FB_SHARE_COMPLETED" withParameters:[NSDictionary dictionaryWithObject:activityType forKey:@"NETWORK"]];
         }
         
     }];
     
-    [(AppDelegate *)[[UIApplication sharedApplication] delegate] unStyleApp];
+    [(MAppDelegate *)[[UIApplication sharedApplication] delegate] unStyleApp];
     [self presentViewController:activityController animated:YES completion:nil];
 }
 
@@ -395,7 +395,7 @@
     {
         NSLog(@"reachabilityChanged unreachableBlock");
         
-        [Flurry logError:@"FB_ERROR_VIEW" message:@"no connection available" error:nil];
+        //[Flurry logError:@"FB_ERROR_VIEW" message:@"no connection available" error:nil];
         
 //        [self.view addSubview:self.noConnectionView];
 //        notificationLabel.text = @"Notification Says Unreachable";
