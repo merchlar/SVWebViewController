@@ -149,7 +149,7 @@
 	
 //    [self.navigationController setNavigationBarHidden:NO animated:YES];
     
-    self.navigationItem.title = @"WEBVIEW";
+    self.navigationItem.title = self.urlTitle;
 
     _isAlreadyLoad = NO;
     

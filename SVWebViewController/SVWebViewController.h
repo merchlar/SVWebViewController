@@ -21,5 +21,5 @@
 @property (strong, nonatomic) IBOutlet UIView *noConnectionView;
 @property BOOL isAlreadyLoad;
 @property (weak, nonatomic) IBOutlet UIImageView *noReachabilityImageView;
-
+@property (strong, nonatomic) NSString * urlTitle;
 @end
