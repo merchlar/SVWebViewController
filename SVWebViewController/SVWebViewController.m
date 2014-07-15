@@ -10,7 +10,7 @@
 #import "SVWebViewControllerActivitySafari.h"
 #import "SVWebViewController.h"
 #import "Reachability.h"
-#import "MAppDelegate.h"
+#import "S1AppDelegate.h"
 #import "Flurry.h"
 
 @interface SVWebViewController () <UIWebViewDelegate>
@@ -360,7 +360,7 @@
     [activityController setCompletionHandler:^(NSString *activityType, BOOL completed) {
         NSLog(@"completed dialog - activity: %@ - finished flag: %d", activityType, completed);
         
-        [(MAppDelegate *)[[UIApplication sharedApplication] delegate] styleApp];
+        [(S1AppDelegate *)[[UIApplication sharedApplication] delegate] styleApp];
         
         if (completed) {
             [Flurry logEvent:[NSString stringWithFormat:@"%@_SHARE_COMPLETED", self.urlTitle] withParameters:[NSDictionary dictionaryWithObject:activityType forKey:@"NETWORK"]];
@@ -368,12 +368,8 @@
         
     }];
     
-    [(MAppDelegate *)[[UIApplication sharedApplication] delegate] unStyleApp];
+    [(S1AppDelegate *)[[UIApplication sharedApplication] delegate] unStyleApp];
     [self presentViewController:activityController animated:YES completion:nil];
-}
-
-- (void)doneButtonClicked:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 #pragma mark -

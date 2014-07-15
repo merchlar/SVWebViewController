@@ -47,4 +47,8 @@
     self.navigationBar.tintColor = [UIColor whiteColor];
 }
 
+- (void)doneButtonClicked:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
 @end
