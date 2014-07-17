@@ -372,6 +372,10 @@
     [self presentViewController:activityController animated:YES completion:nil];
 }
 
+- (void)doneButtonClicked:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
 #pragma mark -
 #pragma mark Reachability methods
 
