@@ -30,8 +30,11 @@
 //        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
 //                                                                                    target:self.webViewController
 //                                                                                    action:@selector(doneButtonClicked:)];
-        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStyleBordered target:self.webViewController action:@selector(doneButtonClicked:)];
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"CLOSE" style:UIBarButtonItemStyleBordered target:self.webViewController action:@selector(doneButtonClicked:)];
         [doneButton setTintColor:[UIColor whiteColor]];
+        [doneButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                              [UIFont fontWithName:@"BankGothicBT-Light" size:17.0f],NSFontAttributeName,
+                                                              nil] forState:UIControlStateNormal];
 //        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
             self.webViewController.navigationItem.leftBarButtonItem = doneButton;
 //        else
