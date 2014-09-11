@@ -44,7 +44,7 @@
     [super viewWillAppear:NO];
     
     self.webViewController.title = self.title;
-    self.navigationBar.tintColor = [UIColor whiteColor];
+    //self.navigationBar.tintColor = [UIColor whiteColor];
 }
 
 - (void)doneButtonClicked:(id)sender {
